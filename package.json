@@ -1,0 +1,35 @@
+{
+  "name": "atelier-pollinations-image-studio",
+  "version": "1.1.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "vite build",
+    "start": "NODE_ENV=production node server.js",
+    "test": "node --test tests/*.test.js",
+    "check:release": "node scripts/check-release.mjs",
+    "test:browser": "node tests/publication-browser.mjs && node tests/browser.mjs && node tests/pollinations-browser.mjs && node tests/language-browser.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "A bilingual Pollinations image studio with server-side BYOP OAuth and a local collection.",
+  "dependencies": {
+    "dotenv": "^18.0.1",
+    "express": "^5.2.1",
+    "ipaddr.js": "^2.5.0",
+    "lucide-react": "^1.47.0",
+    "multer": "^2.4.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "undici": "^6.28.1"
+  },
+  "devDependencies": {
+    "@babel/parser": "^7.29.9",
+    "@playwright/test": "^1.63.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "prettier": "^3.9.8",
+    "vite": "^8.3.0"
+  },
+  "type": "module"
+}
