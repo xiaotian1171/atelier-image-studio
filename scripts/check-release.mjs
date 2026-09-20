@@ -10,11 +10,10 @@ try {
   const c = publicationConfig();
   check('Permanent public app origin is configured', !!c.origin);
   check('Registered public App Key is configured (value not printed)', !!c.clientId);
-  check('Custom-provider forwarding is disabled for the public edition', !c.allowCustomProviders);
+  check('Custom-provider forwarding is disabled', !c.allowCustomProviders);
   if (c.redirectUri) console.log('Register this exact callback: ' + c.redirectUri);
-  if (!c.contactUrl) console.log('NOTE  Operator contact link is not configured (recommended).');
-  if (!c.sourceUrl)
-    console.log('NOTE  Public source URL is not configured (optional in the submission template).');
+  if (!c.contactUrl) console.log('NOTE  Operator contact link is not configured (optional).');
+  if (!c.sourceUrl) console.log('NOTE  Public source URL is not configured (optional).');
   if (process.argv.includes('--live') && c.origin) {
     for (const route of ['/healthz', '/api/app', '/privacy', '/terms']) {
       try {
@@ -33,9 +32,7 @@ try {
       }
     }
   }
-  console.log(
-    '\nThis check does not test OAuth consent or spend Pollen. Complete the manual live checklist before submitting.',
-  );
+  console.log('\nThis check inspects configuration and public routes only; it never signs in or spends Pollen.');
 } catch (e) {
   console.error('FAIL  ' + e.message);
   failed = true;
